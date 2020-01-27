@@ -10,9 +10,22 @@ X = Centerized(load(".\\data\\cat8_simplified_vert503_xyz.jld", "xyz"))
 N = nv(G)
 
 # scatter(X[:,1], X[:,2], X[:,3], aspect_ratio = 1, xlims = [-100, 100], ylims = [-100, 100], zlims = [-100, 100])
+# gplot(1.0*adjacency_matrix(G), X)
 
-gplot(1.0*adjacency_matrix(G), X); plot!(xlims = [-50, 50])
-cat_plot!(X; marker = sin.(0.05 .* X[:,2]), ms = 4 .* abs.(sin.(0.05 .* X[:,2])))
+ ## stripe
+cat_plot(X; marker = sin.(0.1 .* X[:,2]))
+
+## tail
+ind_tail = findall(X[:,2] .> 50)
+cat_plot(X; marker = characteristic(ind_tail, N))
+
+## head
+ind_head = findall(X[:,2] .< -50)
+cat_plot(X; marker = characteristic(ind_head, N))
+
+## claw
+ind_front_claw = findall((X[:,3] .< -17) .& (X[:,2] .< 0))
+cat_plot(X; marker = characteristic(ind_front_claw, N))
 
 for i = 1:3
     print(maximum(X[:,i]), ", ", minimum(X[:,i]), "; ")
