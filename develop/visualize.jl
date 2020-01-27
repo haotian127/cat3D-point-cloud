@@ -24,8 +24,20 @@ ind_head = findall(X[:,2] .< -50)
 cat_plot(X; marker = characteristic(ind_head, N))
 
 ## claw
-ind_front_claw = findall((X[:,3] .< -17) .& (X[:,2] .< 0))
+ind_front_claw = findall((X[:,3] .< -22) .& (X[:,2] .< 0))
 cat_plot(X; marker = characteristic(ind_front_claw, N))
+ind_rear_claw = findall((X[:,3] .< -17) .& (X[:,2] .> 0))
+cat_plot(X; marker = characteristic(ind_rear_claw, N))
+ind_claw = union(ind_front_claw, ind_rear_claw)
+
+## build cat texture
+f = sin.(0.1 .* X[:,2])
+f[ind_tail] .= 1
+f[ind_head] .= 0
+f[ind_claw] .= -1
+cat_plot(X; marker = f)
+
+
 
 for i = 1:3
     print(maximum(X[:,i]), ", ", minimum(X[:,i]), "; ")
