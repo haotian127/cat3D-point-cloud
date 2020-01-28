@@ -31,9 +31,9 @@ cat_plot(X; marker = characteristic(ind_rear_claw, N))
 ind_claw = union(ind_front_claw, ind_rear_claw)
 
 ## build cat texture
-f = sin.(0.1 .* X[:,2])
-f[ind_tail] .= 1
-f[ind_head] .= 0
+f = sin.(0.1 .* X[:,2]) .+ 1
+f[ind_tail] .= -0.5
+f[ind_head] .= -0.2
 f[ind_claw] .= -1
 cat_plot(X; marker = f)
 
