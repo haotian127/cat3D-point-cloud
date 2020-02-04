@@ -57,11 +57,11 @@ end
 # N = nv(G)
 # X = rand(N,3) .* 100
 
-gplot(1.0*adjacency_matrix(G)[ind_head,ind_head], X[ind_head,:])
-
-
-A = zeros(800,3)
-A[:,1] = 1:800
-A[:,2] = 801:1600
-A[:,3] = 1601:2400
-heatmap(rand(230,230))
+# gplot(1.0*adjacency_matrix(G)[ind_head,ind_head], X[ind_head,:])
+#
+#
+# A = zeros(800,3)
+# A[:,1] = 1:800
+# A[:,2] = 801:1600
+# A[:,3] = 1601:2400
+# heatmap(rand(200,200))
