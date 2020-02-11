@@ -11,8 +11,11 @@ X = Centerized(load(".\\data\\cat8_simplified_vert503_xyz.jld", "xyz"))
 # save(".\\data\\cat8_xyz.jld", "xyz", X)
 N = nv(G)
 
-# scatter(X[:,1], X[:,2], X[:,3], aspect_ratio = 1, xlims = [-100, 100], ylims = [-100, 100], zlims = [-100, 100])
-# gplot(1.0*adjacency_matrix(G), X)
+
+# using ORCA
+# plt = scatter(X[:,1], X[:,2], X[:,3], aspect_ratio = 1, xlims = [-100, 100], ylims = [-100, 100], zlims = [-100, 100])
+# # gplot(1.0*adjacency_matrix(G), X)
+# ORCA.savefig(plt, ".\\figures\\cat8.png")
 
  ## stripe
 cat_plot(X; marker = sin.(0.1 .* X[:,2]))
@@ -57,7 +60,7 @@ end
 # N = nv(G)
 # X = rand(N,3) .* 100
 
-# gplot(1.0*adjacency_matrix(G)[ind_head,ind_head], X[ind_head,:])
+gplot(1.0*adjacency_matrix(G), X)
 #
 #
 # A = zeros(800,3)
